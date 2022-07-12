@@ -1,0 +1,18 @@
+<div *ngIf = "book">
+  <h2>{{book.title}}</h2>
+  <h4><a [routerLink]="'/author/'+ book.author.firstname + '_' + book.author.lastname"
+    [title]="book.author.firstname+' '+ book.author.lastname">
+    {{book.author.firstname + " " + book.author.lastname}}
+  </a></h4>
+  <p *ngIf ="book.synopsis">{{book.synopsis}}</p>
+  <div *ngIf = "userService.ifIsCheckedOut(book); then isCheckedOut else notCheckedOut"></div>
+  <ng-template #isCheckedOut>
+    <button type = "button" (click)="onReturnClick(book)">Return</button>
+  </ng-template>
+  <ng-template #notCheckedOut>
+    <button type = "button" (click)="onCheckOutClick(book)">Check Out</button>
+  </ng-template>
+  <fieldset><div *ngFor="let genre of genres">
+    <label>{{genre}}</label>
+  </div></fieldset>
+</div>

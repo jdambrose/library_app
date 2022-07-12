@@ -1,0 +1,5 @@
+<h2>Checked Out: </h2>
+<div *ngIf="!usersBooks.length"><p>You don't have anything checked out...</p></div>
+<ul *ngFor="let book of usersBooks">
+  <a [routerLink]="'/book/'+book.title"><span>{{book.title}}</span></a>
+</ul>

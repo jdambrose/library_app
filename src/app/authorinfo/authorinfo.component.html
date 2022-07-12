@@ -1,0 +1,8 @@
+<div *ngIf="author">
+  <h2>{{author.firstname + ' ' + author.lastname}}</h2>
+  <p *ngIf ="author.about">{{author.about}}</p>
+  <h3>{{'Books by ' + author.firstname + ' ' + author?.lastname + ": "}}</h3>
+</div>
+<ul *ngFor="let book of booksByThisAuthor">
+  <li><a [routerLink]="'/book/'+ book.title" [title] = "book.title">{{book.title}}</a></li>
+</ul>
